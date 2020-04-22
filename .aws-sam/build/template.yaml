@@ -19,6 +19,18 @@ Resources:
           Properties:
             Path: /hello
             Method: get
+  StaticContent:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      CodeUri: StaticContent
+      Handler: app.staticHandler
+      Runtime: nodejs12.x
+      Events:
+        HelloWorld:
+          Type: Api
+          Properties:
+            Path: /static/styles.css
+            Method: get
 Outputs:
   HelloWorldApi:
     Description: API Gateway endpoint URL for Prod stage for Hello World function

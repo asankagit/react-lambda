@@ -18,7 +18,8 @@ import { createElement } from 'react';
 import { renderToString } from 'react-dom/server';
 import Hello from './src/Hello';
 import World from './src/World';
-var express = require('express')
+const express = require('express')
+const fs = require('fs');
 const awsServerlessExpress = require('aws-serverless-express')
 
 
@@ -34,7 +35,7 @@ const template = (content) => `<!DOCTYPE html>
 <head>
   <meta charset="utf-8">
   <title>my test </title>
-  <link href="file:///E:/nodejs/nodelambdaui/react-ssr-lambda/.aws-sam/build/HelloWorldFunction/styles.css" rel="stylesheet">
+  <link href="./static/styles.css" rel="stylesheet">
 </head>
 <body>
   <div class="content">
@@ -55,6 +56,16 @@ exports.lambdaHandler = (event, context) => {
     awsServerlessExpress.proxy(server, event, context)
 }
 
+
+exports.staticHandler = (event, context, callback) => {
+  // awsServerlessExpress.proxy(server, event, context)
+  const cssContents = fs.readFileSync('./styles.css', 'utf8');
+  callback(null, {
+    'statusCode': 200,
+    "headers": {"Content-type": "text/css"},
+    'body': cssContents
+  })
+}
 // exports.lambdaHandler = function(event, context, callback){
 //     const html = renderToString(createElement(Hello));
 
