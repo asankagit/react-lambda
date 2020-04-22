@@ -8,7 +8,7 @@ class Hello extends PureComponent {
 
     render(){
         return (
-            <div className={st.top}>
+            <div className={st.top} class="top">
                 d
             </div>
         )

@@ -34,7 +34,7 @@ const template = (content) => `<!DOCTYPE html>
 <head>
   <meta charset="utf-8">
   <title>my test </title>
-  <link href="style.css" rel="stylesheet">
+  <link href="file:///E:/nodejs/nodelambdaui/react-ssr-lambda/.aws-sam/build/HelloWorldFunction/styles.css" rel="stylesheet">
 </head>
 <body>
   <div class="content">
@@ -42,10 +42,13 @@ const template = (content) => `<!DOCTYPE html>
         ${content}
      </div>
   </div>
-</body>`
+</body
+</html>`;
 
 app.use('/', (req, res) => {
-    res.send(renderToString(createElement(Hello)))
+    console.log("rendertoString", renderToString(createElement(Hello)))
+    console.log("templte", template(renderToString(createElement(Hello))))
+    res.send(template(renderToString(createElement(Hello))))
 })
 
 exports.lambdaHandler = (event, context) => {
