@@ -34,8 +34,10 @@ const template = (content) => `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>my test </title>
+  <title>Pixellio </title>
   <link href="./static/styles.css" rel="stylesheet">
+  <script data-ad-client="ca-pub-2317903401020318" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <meta property="og:image"  content="https://static.observableusercontent.com/thumbnail/16029014ad2d5b18c0b97a351939893d2f30a48b25a6caa7741fe22d5d30e5a1.jpg">
 </head>
 <body>
   <div class="content">
@@ -43,6 +45,17 @@ const template = (content) => `<!DOCTYPE html>
         ${content}
      </div>
   </div>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- pixellio_adsense -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2317903401020318"
+     data-ad-slot="4706545270"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 </body
 </html>`;
 
