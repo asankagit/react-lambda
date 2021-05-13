@@ -14,10 +14,10 @@ let response;
  * @returns {Object} object - API Gateway Lambda Proxy Output Format
  * 
  */
-import { createElement } from 'react';
+import React, { createElement } from 'react';
 import { renderToString } from 'react-dom/server';
 import Hello from './src/Hello';
-import World from './src/World';
+import {App as Animation } from './src/threejs/Animation';
 const express = require('express')
 const fs = require('fs');
 const awsServerlessExpress = require('aws-serverless-express')
@@ -47,9 +47,7 @@ const template = (content) => `<!DOCTYPE html>
 </html>`;
 
 app.use('/', (req, res) => {
-    console.log("rendertoString", renderToString(createElement(Hello)))
-    console.log("templte", template(renderToString(createElement(Hello))))
-    res.send(template(renderToString(createElement(Hello))))
+    res.send(template(renderToString(<Hello {...req}/>)))
 })
 
 exports.lambdaHandler = (event, context) => {
